@@ -99,10 +99,36 @@ let arr=[{"id":1,"first_name":"Chadwick","last_name":"Ayre","email":"cayre0@cam.
 {"id":99,"first_name":"Gordon","last_name":"Vieyra","email":"gvieyra2q@geocities.com","gender":"Male","img_src":"https://robohash.org/nullaeumaut.png?size=50x50&set=set1","class":11,"marks":59,"passing":false,"city":"Nīkshahr"},
 {"id":100,"first_name":"Zoe","last_name":"Moorhead","email":"zmoorhead2r@sfgate.com","gender":"Female","img_src":"https://robohash.org/fugiatcorporisdeleniti.png?size=50x50&set=set1","class":8,"marks":43,"passing":true,"city":"Makin Village"}];
 
+arr.forEach((e) => {
+    if (e.passing == true) {
+      e.passing = "Passed";
+    } else {
+      e.passing = "Failed";
+    }
+});
+
+let searchEl=document.getElementById("search-button");
+let inputEl=document.getElementById("input-Box");
+let sortAZ=document.getElementById("sortAZ");
+let sortZA=document.getElementById("sortZA");
+let sortByMarks=document.getElementById("sortMarks");
+let sortByPass=document.getElementById("sortPass");
+let sortByClass=document.getElementById("sortClass");
+let sortByGen=document.getElementById("sortGen");
 
 
-
-arr.map((data)=>{
+// here i am working on search button function
+function searchSt(){
+    let val=inputEl.value;
+    if(!val){
+        return alert("enter a value please");
+    }
+   deleteRows();
+   let updatedArr=searchfun(val);
+   createAndFillArr(updatedArr);
+}
+function createAndFillArr(arr){
+    arr.map((data)=>{
  let tableEl=document.getElementById("myTable");
  let row=tableEl.insertRow(-1);
  let cell1=row.insertCell(0);
@@ -113,12 +139,40 @@ arr.map((data)=>{
  let cell6=row.insertCell(5);
  let cell7=row.insertCell(6);
  cell1.innerText=data.id;
- cell2.innerHtml=`<img src="${data.img_src}" alt="Image here"> <span>${data.first_name} ${data.last_name}</span>`;
+ cell2.innerHTML=`<img src="${data.img_src}" alt="image-here" height=22px style="border:1px solid black;border-radius:50%;margin-right:15px;"> <span>${data.first_name} ${data.last_name}</span>`
  cell3.innerText=`${data.gender}`;
  cell4.innerText=`${data.class}`;
  cell5.innerText=`${data.marks}`;
  cell6.innerText=`${data.passing}`;
  cell7.innerText=`${data.email}`;
+    })
+}
+function searchfun(val){
+    let updatedArr=arr.filter((data)=>{
+        if(data.first_name.toLowerCase()===val.toLowerCase() || data.last_name.toLowerCase()===val.toLowerCase() || data.email.toLowerCase()===val.toLowerCase() ){
+            return data;
+        }
+    })
+    return updatedArr;
+}
+function deleteRows(){
+    let tableEl=document.getElementById("myTable");
+    // here i delete all the rows to empty the table
+    for(let i=0;i<arr.length;i++){
+        tableEl.deleteRow(1);
+    }
+}
+function sortAz(){
+    alert("Sorry I'm currently working on it");
+}
+// global function to update the table 
+createAndFillArr(arr);
 
 
-})
+searchEl.addEventListener("click",searchSt);
+sortAZ.addEventListener("click",sortAz);
+sortZA.addEventListener("click",sortAz);
+sortByMarks.addEventListener("click",sortAz);
+sortByPass.addEventListener("click",sortAz);
+sortByClass.addEventListener("click",sortAz);
+sortByGen.addEventListener("click",sortAz);
