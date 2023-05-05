@@ -1,0 +1,74 @@
+body{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    background: #CDCDCD;
+    /* font-size: 16px; */
+    overflow: hidden;
+}
+.nav-section{
+    width: 100vw;
+    height: 60px;
+    background: #000000;
+    color: #ffffff;
+    font-size: 30px;
+    padding-top: 2%;
+    padding-left: 1%;
+}
+.search-section{
+    margin: 1% 0%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.search-section>input{
+    width: 85vw;
+    height: 60px;
+}
+.search-section>button{
+    width: 10vw;
+    height: 60px;
+    background: black;
+    color: white;
+    font-size: 18px;
+}
+/* here i target the placeholder of input tag */
+.search-section>input::placeholder{
+    font-size: 22px;
+    color: black;
+   padding: 2%;
+    font-weight: 400;
+    font-family: sans-serif;
+}
+/* button-section */
+.button-section{
+    width: 100vw;
+}
+.button-section>button{
+    background: #000000;
+    color: #ffffff;
+    width: 217px;
+    height: 60px;
+    margin-left: 2%;
+    font-size: 24px;
+    font-weight: 400;
+    font-family:Arial, Helvetica, sans-serif;
+}
+/* table-section */
+.table-section{
+    width: 100vw;
+    margin: 1% 2%;
+}
+table, th, td {
+    border: 2px solid black;
+}
+.table-header{
+    width: 13.5rem;
+}
+.table-header-name{
+    width: 20rem;
+}
+td{
+    text-align: center;
+}
